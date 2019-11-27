@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta http-equiv=“Pragma” content=”no-cache”>
+	<meta http-equiv=“Expires” content=”-1″>
+	<meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="title" content="Preview Avatar - Preview Your New Logo/Avatar look on Steam/CS:GO">
+	<meta name="description" content="Check how your new logo/avatar will look on Steam/CS:GO">
+	<meta name="keywords" content="hltv news generator, steam avatar, steam preview, steam profile, steam avatar preview, steam profile preview">
+	<meta name="robots" content="index, follow">
+	<meta name="language" content="English">
+	<meta name="author" content="Avi Thour">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Oswald:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300, 400" rel="stylesheet"> 
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <title>Preview Avatar - Preview Your New Logo/Avatar look on Steam/CS:GO</title>
+	<link href="style.css" rel="stylesheet">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <body>
+
+	<div id="app">
+	<div class="container" id="main">
+  	<h1>Preview Your Avatar</h1>
+  	<p>Check how your new logo/avatar will look on Steam/CS:GO.</p>
+	</div>
+	<br><br>
+	<center>
+	<p>Simply enter the Image URL of your image or Upload an Image to get a general idea of how it will look on Steam and in CS:GO.<br>
+	Idea By <a href="https://www.youtube.com/bananagaming" target="_blank" >Maxim (aka BananaGaming)</a> - Implemented By <a href="https://steamcommunity.com/id/avithour/" target="_blank" >Avi Thour</a>- Have Fun!</p>
+	
+	<br><hr>
+	<br>
+	<div class="form-group">
+		<label class="col-md-6 control-label" for="news">Enter Your Steam Name/Group Name:</label>
+		<div class="col-md-6">  
+		<input type="text" v-model="name" class="form-control input-md"></br>
+		</div>
+		<label class="col-md-6 control-label" for="news">Enter Your Image URL:</label>
+		<div class="col-md-6">                     
+		   <input type="text" v-model="image" class="form-control input-md"></br>
+		<label class="col-md-6 control-label" for="news">Upload Your Image:</label>
+		   <input type="file" @change="onFileChange" />
+		   </br>
+		</div>
+	</div>
+	
+	<div style="position: relative">
+	<img src="steamProfile.png" alt="img">
+	<img :src="image" id="steamprofile" style=" left: 107px; top: 33px; ">
+	</div>
+	
+	<div style="position: relative">
+	<p id="name" style="left: 292px; top: -190px;">{{name}}</p>
+	</div>
+	
+	<br><br>
+	<div style="position: relative">
+	<img src="GroupProfile.png" alt="img">
+	<img :src="image" id="GroupProfile" style=" left: 97px; top: 6px; ">
+	</div>
+	
+	<div style="position: relative">
+	<p id="name" style="left: 292px; top: -190px; font-family: Arial, Helvetica, Verdana, sans-serif;">{{name}}</p>
+	</div>
+	
+	<br><br>
+	<div style="position: relative">
+	<img src="Group.png" alt="img">
+	<img :src="image" id="group" style="left: 460px; top: 45px;">
+	</div>
+	
+	<div style="position: relative">
+	<p id="name" style="left: 542px; top: -162px; font-size: 13px; font-family: Arial, Helvetica, Verdana, sans-serif;">{{name}}</p>
+	</div>
+	<br><br>
+	<div style="position: relative">
+	<img src="CSGOMatchAvatar.png" alt="img">
+	<img :src="image" id="matchavatar" style="left: 610px; top: 4px;">
+	</div>
+	<br><br>
+	<div style="position: relative">
+	<img src="CSGOScoreBoard.png" alt="img">
+	<img :src="image" id="scoreboard" style="left: 288px; top: 384px;">
+	</div>
+	
+	<div style="position: relative">
+	<p id="name" style="font-size: 17px; left: 318px; top: -215px; font-family: Arial, Helvetica, Verdana, sans-serif; color: #ffffb0;">{{name}}</p>
+	</div>
+	<br><br>
+	<div style="position: relative">
+	<img src="CSGOSpectate.png" alt="img">
+	<img :src="image" id="spectate" style="left: 277px; top: 17px;">
+	</div>
+	
+	<div style="position: relative">
+	<p id="name" style="left: 360px; top: -90px; font-family: Arial, Helvetica, Verdana, sans-serif;">{{name}}</p>
+	</div>
+	<br><br>
+	<div style="position: relative">
+	<img src="CSGOTeam.png" alt="img">
+	<img :src="image" id="team" style="left: 445px; top: 7px;">
+	</div>
+	<br><br>
+	</center>
+	</div>
+	<script>
+		Vue.config.productionTip = false;
+		const app = new Vue({
+			el: '#app',
+			data: {
+				image: "https://media2.giphy.com/media/myuVlUqqZHQmA/giphy.gif?cid=790b7611f55eeb7e0fbef2b8f75017f3311b9b63de973f0d&rid=giphy.gif",
+				name: "Avi Thour",
+			},
+			methods: {
+					setNewValue: function () {
+						this.image = '';
+						this.name = '';
+					},
+					onFileChange(e) {
+					  const file = e.target.files[0];
+					  this.image = URL.createObjectURL(file);
+					}
+				}
+		});
+	</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
